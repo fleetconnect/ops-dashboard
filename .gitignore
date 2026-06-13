@@ -1,0 +1,12 @@
+node_modules
+.next
+out
+dist
+*.log
+.env
+.env.*
+!.env.example
+.env.local
+.DS_Store
+**/.DS_Store
+.playwright-mcp
