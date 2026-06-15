@@ -10,3 +10,6 @@ dist
 .DS_Store
 **/.DS_Store
 .playwright-mcp
+
+# TypeScript incremental build cache
+*.tsbuildinfo
