@@ -32,7 +32,14 @@ export function Conversations() {
             <div className="flex items-start gap-3">
               <MessagesSquare className="w-4 h-4 mt-0.5 shrink-0 text-muted-foreground" />
               <div className="min-w-0 flex-1">
-                <div className="text-sm font-medium text-foreground">{c.title}</div>
+                <div className="text-sm font-medium text-foreground flex items-center gap-2">
+                  {c.title}
+                  {c.frontmatterStatus === "invalid" && (
+                    <span className="inline-flex items-center rounded border border-amber-500/30 bg-amber-500/10 px-1.5 py-0.5 text-[10px] font-medium text-amber-400">
+                      frontmatter invalid · fallback
+                    </span>
+                  )}
+                </div>
                 <div className="text-xs text-muted-foreground truncate">{c.path}</div>
               </div>
               <div className="text-xs text-muted-foreground shrink-0">

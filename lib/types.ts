@@ -216,6 +216,9 @@ export interface ConversationSummary {
   people: string[];
   companies: string[];
   modifiedAt: string;
+  // 'invalid' = the note's frontmatter could not be parsed; date is filename-derived fallback and
+  // people/companies are not confirmed. Surfaced so fallback is never shown as confirmed metadata.
+  frontmatterStatus?: "valid" | "invalid";
 }
 
 export interface DailyNoteResult {
