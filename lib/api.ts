@@ -17,6 +17,8 @@ import type {
   SystemStatus,
   VaultNote,
   VaultNoteSummary,
+  FileConversationInput,
+  FileConversationResult,
   VaultStatus,
   VerdictRecord,
   VerdictType,
@@ -108,5 +110,11 @@ export const api = {
       request<DailyNoteResult>(`/vault/daily${date ? `?date=${encodeURIComponent(date)}` : ""}`),
     note: (notePath: string) =>
       request<VaultNote>(`/vault/note?path=${encodeURIComponent(notePath)}`),
+    // The only Plane-B write. Governed, approval-gated, non-destructive (06 Conversations only).
+    fileConversation: (input: FileConversationInput) =>
+      request<FileConversationResult>("/vault/conversations/file", {
+        method: "POST",
+        body: JSON.stringify(input),
+      }),
   },
 };

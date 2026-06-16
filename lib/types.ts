@@ -232,3 +232,45 @@ export interface VaultStatus {
   state: CapabilityState;
   reason: string;
 }
+
+// Phase 2A — governed conversation filing (the single Plane-B write).
+export type SourceType =
+  | "linkedin"
+  | "email"
+  | "sales-call"
+  | "discovery-call"
+  | "facebook"
+  | "voice-note"
+  | "meeting-transcript"
+  | "crm-export"
+  | "pasted-thread"
+  | "screenshot-text"
+  | "other";
+
+export interface FileConversationInput {
+  reviewedMarkdown: string;
+  proposedTitle: string;
+  conversationDate?: string;
+  sourceType: SourceType;
+  sourceReference?: string;
+  people?: string[];
+  companies?: string[];
+  projects?: string[];
+  approvalReference: string;
+  idempotencyKey?: string;
+}
+
+export type FilingResult =
+  | "created"
+  | "already_exists"
+  | "needs_review"
+  | "rejected"
+  | "failed";
+
+export interface FileConversationResult {
+  result: FilingResult;
+  relativePath?: string;
+  candidates?: string[];
+  reason?: string;
+  auditId: string;
+}

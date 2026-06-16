@@ -7,6 +7,7 @@ import { relativeTime } from "@/lib/os";
 import type { ConversationSummary } from "@/lib/types";
 import { useVaultResource } from "@/lib/use-vault-resource";
 import { VaultPanel } from "../vault-panel";
+import { FileConversation } from "./file-conversation";
 import { MessagesSquare, Users, Building2 } from "lucide-react";
 
 export function Conversations() {
@@ -23,6 +24,7 @@ export function Conversations() {
       onRefresh={refresh}
       isEmpty={!!data && data.length === 0}
       emptyText={EMPTY_STATE.conversations}
+      beforeContent={<FileConversation onFiled={refresh} />}
     >
       <ul className="space-y-2">
         {data?.map((c) => (

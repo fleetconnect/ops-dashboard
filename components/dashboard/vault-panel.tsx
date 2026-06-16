@@ -17,6 +17,8 @@ interface VaultPanelProps {
   onRefresh: () => void;
   isEmpty?: boolean;
   emptyText?: string;
+  // Always-visible content rendered above the data/empty/loading region (e.g. a write action).
+  beforeContent?: React.ReactNode;
   children?: React.ReactNode;
 }
 
@@ -28,6 +30,7 @@ export function VaultPanel({
   onRefresh,
   isEmpty,
   emptyText,
+  beforeContent,
   children,
 }: VaultPanelProps) {
   const blocked = status && status.state !== "available";
@@ -80,6 +83,8 @@ export function VaultPanel({
           <span>{error}</span>
         </div>
       )}
+
+      {beforeContent}
 
       {loading && !error ? (
         <div className="rounded-xl border border-border bg-card p-8 text-center text-sm text-muted-foreground">
