@@ -43,6 +43,7 @@ export function Header({ activeSection, streamStatus }: HeaderProps) {
   // reasoning runtime and vault read access. Full detail lives in the Agent Panel.
   const reasoning = capabilities?.find((c) => c.id === "reasoning-runtime");
   const vaultRead = capabilities?.find((c) => c.id === "vault-read");
+  const filing = capabilities?.find((c) => c.id === "conversation-filing");
 
   return (
     <header className="h-16 border-b border-border bg-background/80 backdrop-blur-sm sticky top-0 z-30 flex items-center justify-between px-6">
@@ -102,6 +103,14 @@ export function Header({ activeSection, streamStatus }: HeaderProps) {
             state={vaultRead.state}
             reason={vaultRead.reason}
             label="Vault"
+            className="hidden xl:inline-flex"
+          />
+        )}
+        {filing && (
+          <CapabilityBadge
+            state={filing.state}
+            reason={filing.reason}
+            label="Filing"
             className="hidden xl:inline-flex"
           />
         )}
