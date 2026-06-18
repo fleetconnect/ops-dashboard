@@ -18,6 +18,8 @@ import { Projects } from "@/components/dashboard/sections/projects";
 import { Goals } from "@/components/dashboard/sections/goals";
 import { Conversations } from "@/components/dashboard/sections/conversations";
 import { DailyNote } from "@/components/dashboard/sections/daily-note";
+import { MorningBrief } from "@/components/dashboard/sections/morning-brief";
+import { Integrations } from "@/components/dashboard/sections/integrations";
 import { useEventStream } from "@/lib/use-event-stream";
 import type { Section } from "@/lib/os";
 
@@ -62,6 +64,10 @@ export default function Dashboard() {
         return <Conversations />;
       case "daily-note":
         return <DailyNote />;
+      case "morning-brief":
+        return <MorningBrief />;
+      case "integrations":
+        return <Integrations />;
       default:
         return <AgentPanel stream={stream} />;
     }

@@ -277,3 +277,39 @@ export interface FileConversationResult {
   reason?: string;
   auditId: string;
 }
+
+// Hermes read-first integrations (Phase 1).
+export type ConnectorState = "available" | "degraded" | "blocked" | "not_configured";
+export interface ConnectorDescriptor {
+  id: string;
+  displayName: string;
+  provider: string;
+  capabilityState: ConnectorState;
+  authState: string;
+  lastSuccessfulSync: string | null;
+  lastAttemptedSync: string | null;
+  permissionsGranted: string[];
+  supportedOperations: string[];
+  sourceOwnership: string;
+  errorState: string | null;
+  dataFreshness: string | null;
+  rateLimitState: string;
+  reason: string;
+}
+export interface SourceRef { system: string; id?: string; detail?: string; freshness: string | null }
+export interface MorningRevenueBrief {
+  generatedAt: string;
+  primaryFocus: { outcome: string; rationale: string; sources: SourceRef[] };
+  kpiBottleneck: { constraint: string; evidence: string; sources: SourceRef[] } | null;
+  bestProspect: {
+    person: string | null; company: string | null; why: string;
+    lastInteraction: string | null; nextAction: string; confidence: string; sources: SourceRef[];
+  } | null;
+  revenueAtRisk: { warmOpportunities: string[]; openProposals: string[]; overduePayments: string[]; missingFollowUps: string[]; sources: SourceRef[] };
+  meetings: Array<{ time: string | null; person: string | null; company: string | null; purpose: string; preCallBrief: string; desiredOutcome: string; sources: SourceRef[] }>;
+  followUpsReady: Array<{ to: string; subject: string; draft: string; requiresApproval: boolean; sources: SourceRef[] }>;
+  approvalsNeeded: string[];
+  systemHealth: { sources: Array<{ connectorId: string; state: ConnectorState; freshness: string | null; error: string | null }>; missingSources: string[]; errors: string[] };
+  endOfDayScoreboard: string[];
+  inferenceNotes: string[];
+}

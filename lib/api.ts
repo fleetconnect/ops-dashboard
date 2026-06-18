@@ -19,6 +19,8 @@ import type {
   VaultNoteSummary,
   FileConversationInput,
   FileConversationResult,
+  ConnectorDescriptor,
+  MorningRevenueBrief,
   VaultStatus,
   VerdictRecord,
   VerdictType,
@@ -51,6 +53,8 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
 export const api = {
   health: () => request<{ status: string; timestamp: string }>("/health"),
   systemStatus: () => request<SystemStatus>("/system/status"),
+  integrations: () => request<{ connectors: ConnectorDescriptor[] }>("/integrations"),
+  morningBrief: () => request<MorningRevenueBrief>("/morning-brief"),
   weeklyReview: (windowDays = 7) =>
     request<WeeklyReview>(`/weekly-review?window_days=${windowDays}`),
   pendingApprovals: () => request<Approval[]>("/approvals"),

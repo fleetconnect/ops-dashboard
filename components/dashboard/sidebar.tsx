@@ -20,6 +20,8 @@ import {
   Flag,
   MessagesSquare,
   CalendarDays,
+  Sunrise,
+  Plug,
 } from "lucide-react";
 
 interface SidebarProps {
@@ -34,6 +36,13 @@ type NavItem = { id: Section; label: string; icon: React.ElementType };
 // Two groups mirror the two data planes. Operations = Plane A live state; Knowledge = Plane B
 // vault (read-only in Phase 1). Agent Panel leads as the default landing / front door.
 const NAV_GROUPS: { heading: string; items: NavItem[] }[] = [
+  {
+    heading: "Intelligence",
+    items: [
+      { id: "morning-brief", label: SECTION_TITLES["morning-brief"], icon: Sunrise },
+      { id: "integrations", label: SECTION_TITLES["integrations"], icon: Plug },
+    ],
+  },
   {
     heading: "Operations",
     items: [

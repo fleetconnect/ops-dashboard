@@ -13,7 +13,9 @@ export type Section =
   | "projects"
   | "goals"
   | "conversations"
-  | "daily-note";
+  | "daily-note"
+  | "morning-brief"
+  | "integrations";
 
 export const SECTION_TITLES: Record<Section, string> = {
   "agent-panel": "Agent Panel",
@@ -29,13 +31,17 @@ export const SECTION_TITLES: Record<Section, string> = {
   goals: "Goals",
   conversations: "Conversations",
   "daily-note": "Daily Note",
+  "morning-brief": "Morning Brief",
+  integrations: "Integrations",
 };
 
 // Sidebar grouping. Operations = Plane A (live operational state); Knowledge = Plane B
-// (durable vault knowledge, read-only in Phase 1). The Agent Panel is the default landing.
-export type SectionGroup = "operations" | "knowledge";
+// (durable vault knowledge, read-only in Phase 1); Intelligence = cross-source read-first views.
+export type SectionGroup = "operations" | "knowledge" | "intelligence";
 
 export const SECTION_GROUP: Record<Section, SectionGroup> = {
+  "morning-brief": "intelligence",
+  integrations: "intelligence",
   "agent-panel": "operations",
   "mission-control": "operations",
   "approval-queue": "operations",

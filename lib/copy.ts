@@ -7,6 +7,13 @@ import type { Section } from "./os";
 // Per-screen purpose line rendered under each section title. `emphasis`, when present, is the
 // trailing sentence that should read bolder than the rest (e.g. the Approval Queue "Start here").
 export const SECTION_PURPOSE: Record<Section, { text: string; emphasis?: string }> = {
+  "morning-brief": {
+    text: "One read-first brief across your connected tools: today's focus, the KPI bottleneck, best prospect, revenue at risk, meetings, and reply drafts. Drafts only — nothing sends.",
+    emphasis: "Read-only. Every conclusion cites its source; missing data is shown as missing, never zero.",
+  },
+  integrations: {
+    text: "Every connector and its honest state — what's connected, what's read-only, what's not configured. No secrets are shown.",
+  },
   "approval-queue": {
     text: "Messages the AI has drafted and checked, waiting for a human decision. Nothing sends without one.",
     emphasis: "Start here — this is the only screen that needs you.",
